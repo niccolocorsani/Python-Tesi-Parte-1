@@ -6,7 +6,6 @@ from business_logic.correct_csv import specify_physical_object, get_all_starts, 
 
 ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
 def generate_lines(list_of_lines, img_name):
     nodes_csv = []
     edges_csv = []
@@ -28,7 +27,7 @@ def generate_lines(list_of_lines, img_name):
             elements = string_pattern.split(',')
 
             if '?' in string_pattern:
-                raise Exception("Node has issue ????")
+                raise Exception("")
 
             if 'measu' not in string_pattern:
                 if 'star' in elements[0]:  ## Nodo star non può avere end
@@ -201,6 +200,7 @@ if __name__ == '__main__':
         lines = read_from_file_and_place_in_list(ROOT_DIR + '/images_txt/' + path_name)
         nodes_csv, edges_csv, measures_csv = generate_lines(lines, path_name)
 
+
         specify_physical_object(nodes_csv)
 
         all_starts = []
@@ -210,6 +210,7 @@ if __name__ == '__main__':
         all_exits = []
         exits = get_all_exits(nodes_csv)
         all_exits.extend(exits)
+
 
 
 
@@ -228,9 +229,7 @@ if __name__ == '__main__':
         for element in measures_csv:
             f5.write(element)
             f5.write('\n')
-
-
-
+        f5.close()
 
 
 
@@ -250,6 +249,7 @@ if __name__ == '__main__':
         for element in nodes_csv:
             f4.write(element)
             f4.write('\n')
+        f4.close()
 
         f2 = open(ROOT_DIR + '/all_csv/' + 'all-starts.txt', 'a')
         f2.write('\n')
