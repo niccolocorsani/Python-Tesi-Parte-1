@@ -60,3 +60,5 @@ yarg==0.1.9
 setuptools==62.0.0
 pycallgraph==1.0.1
 imutils==0.5.4
+SPARQLWrapper==2.0.0
+Flask==2.1.2

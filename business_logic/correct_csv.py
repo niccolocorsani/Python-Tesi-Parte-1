@@ -5,19 +5,23 @@
 def specify_physical_object(nodes_csv):
     for i in range(len(nodes_csv)):
         node_name = nodes_csv[i].split(';')[0]
-        if 's' in node_name[0]  and 'star' not in node_name and 'exit' not in node_name and'PhysicalO' in nodes_csv[i]:
-            node_element = node_name
-            nodes_csv[i] = node_element + ';Class;Tank;'
-        if 'p' in node_name[0] and 'star' not in node_name and 'exit' not in node_name and 'PhysicalO' in nodes_csv[i]:
-            node_element = node_name
-            nodes_csv[i] = node_element + ';Class;Pump;'
-        if 'c' in node_name[0] and 'star' not in node_name and 'exit' not in node_name and 'PhysicalO' in nodes_csv[i]:
-            node_element = node_name
-            nodes_csv[i] = node_element + ';Class;Container;'
-        if 'r-' in node_name[0] and 'star' not in node_name and 'exit' not in node_name and 'PhysicalO' in nodes_csv[i]:
-            node_element = node_name
-            nodes_csv[i] = node_element + ';Class;Reactor;'
 
+        try:
+            if 's' in node_name[0]  and 'star' not in node_name and 'exit' not in node_name and'PhysicalO' in nodes_csv[i]:
+                node_element = node_name
+                nodes_csv[i] = node_element + ';Class;Tank;'
+            if 'p' in node_name[0] and 'star' not in node_name and 'exit' not in node_name and 'PhysicalO' in nodes_csv[i]:
+                node_element = node_name
+                nodes_csv[i] = node_element + ';Class;Pump;'
+            if 'c' in node_name[0] and 'star' not in node_name and 'exit' not in node_name and 'PhysicalO' in nodes_csv[i]:
+                node_element = node_name
+                nodes_csv[i] = node_element + ';Class;Container;'
+            if 'r-' in node_name[0] and 'star' not in node_name and 'exit' not in node_name and 'PhysicalO' in nodes_csv[i]:
+                node_element = node_name
+                nodes_csv[i] = node_element + ';Class;Reactor;'
+        except:
+            print('errore nella correzione')
+            print(nodes_csv[i])
 
 
 def get_all_starts(nodes_csv):
